@@ -1,0 +1,30 @@
+//Variables
+$clr-white: #fff;
+$clr-first-gradient: rgba(122, 163, 126, 1);
+$clr-second-gradient: rgba(228, 225, 113, 1);
+
+//Reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+img,
+span {
+  display: block;
+}
+
+img {
+  width: 100%;
+}

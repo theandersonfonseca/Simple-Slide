@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="../dist/main.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="slider">
+      <div class="slider__controls">
+        <img
+          src="../src/img/foto1-thumb.jpg"
+          class="slider__control slider__control--active"
+          data-control="1"
+        />
+        <img
+          src="../src/img/foto2-thumb.jpg"
+          class="slider__control"
+          data-control="2"
+        />
+        <img
+          src="../src/img/foto3-thumb.jpg"
+          class="slider__control"
+          data-control="3"
+        />
+        <img
+          src="../src/img/foto4-thumb.jpg"
+          class="slider__control"
+          data-control="4"
+        />
+        <img
+          src="../src/img/foto5-thumb.jpg"
+          class="slider__control"
+          data-control="5"
+        />
+        <img
+          src="../src/img/foto6-thumb.jpg"
+          class="slider__control"
+          data-control="6"
+        />
+      </div>
+
+      <div class="slider__imgs">
+        <span class="slider__arrow-previous" data-arrow="previous"> < </span>
+        <img
+          src="../src/img/foto1.jpg"
+          class="slider__img slider__img--active"
+          data-img="1"
+        />
+        <img src="../src/img/foto2.jpg" class="slider__img" data-img="2" />
+        <img src="../src/img/foto3.jpg" class="slider__img" data-img="3" />
+        <img src="../src/img/foto4.jpg" class="slider__img" data-img="4" />
+        <img src="../src/img/foto5.jpg" class="slider__img" data-img="5" />
+        <img src="../src/img/foto6.jpg" class="slider__img" data-img="6" />
+        <span class="slider__arrow-next" data-arrow="next"> > </span>
+      </div>
+    </div>
+  </body>
+</html>
