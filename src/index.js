@@ -7,9 +7,12 @@ const imgActiveClass = 'slider__img--active';
 
 let currentControl = controls[0];
 let currentImg = imgs[0];
-let timerToSwitchImgs = 6000;
+const timerToSwitchImgs = 6000;
 
-let nextControl, nextImg, previousControl, previousImg;
+let nextControl;
+let nextImg;
+let previousControl;
+let previousImg;
 
 const setCurrentStates = (directionOrFirstOrControl, control, img) => {
   switch (directionOrFirstOrControl) {
@@ -24,8 +27,8 @@ const setCurrentStates = (directionOrFirstOrControl, control, img) => {
       break;
 
     case 'first':
-      currentControl = controls[0];
-      currentImg = imgs[0];
+      [currentControl] = [...controls];
+      [currentImg] = [...imgs];
       break;
 
     default:
@@ -37,8 +40,8 @@ const setCurrentStates = (directionOrFirstOrControl, control, img) => {
 
 const handleFirstAndLastImgs = (firstOrLast) => {
   if (firstOrLast === 'last') {
-    nextControl = controls[0];
-    nextImg = imgs[0];
+    [nextControl] = [...controls];
+    [nextImg] = [...imgs];
   } else {
     setCurrentStates('first');
   }
@@ -55,11 +58,11 @@ const updateNextAndPreviousStates = () => {
 };
 
 const handleArrowDirection = (direction) => {
-  if (direction === 'next') {
-    if (currentImg.dataset.img === '6') handleFirstAndLastImgs('last');
-  } else {
-    if (currentImg.dataset.img === '1') handleFirstAndLastImgs('first');
-  }
+  if (direction === 'next' && currentImg.dataset.img === '6')
+    handleFirstAndLastImgs('last');
+
+  if (direction !== 'next' && currentImg.dataset.img === '1')
+    handleFirstAndLastImgs('first');
 
   setCurrentStates(direction === 'next' ? 'next' : 'previous');
 
@@ -86,15 +89,18 @@ const handleTimeInterval = () => {
 
 let refreshTimeInterval = setInterval(handleTimeInterval, timerToSwitchImgs);
 
+const setArrowDirection = (arrow) =>
+  arrow === 'next'
+    ? handleArrowDirection('next')
+    : handleArrowDirection('previous');
+
 const HandleArrows = (e) => {
   const arrowTarget = e.target;
 
   cleanImgs();
   clearInterval(refreshTimeInterval);
 
-  arrowTarget.dataset.arrow === 'next'
-    ? handleArrowDirection('next')
-    : handleArrowDirection('previous');
+  setArrowDirection(arrowTarget.dataset.arrow);
 
   currentControl.classList.add(controlActiveClass);
   currentImg.classList.add(imgActiveClass);
@@ -121,10 +127,8 @@ const handleControls = (e) => {
   refreshTimeInterval = setInterval(handleTimeInterval, timerToSwitchImgs);
 };
 
-const init = (() => {
-  controls.forEach((control) =>
-    control.addEventListener('click', handleControls)
-  );
+controls.forEach((control) =>
+  control.addEventListener('click', handleControls)
+);
 
-  arrows.forEach((arrow) => arrow.addEventListener('click', HandleArrows));
-})();
+arrows.forEach((arrow) => arrow.addEventListener('click', HandleArrows));
