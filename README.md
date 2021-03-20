@@ -1,6 +1,5 @@
-# Simple-Slider
+# Slider
 
-Transição de imagens com sass e js puro, inspirado no slide feito no curso de Javascript da Origamid no projeto Animais Fantásticos:
-https://origamid.github.io/animais-fantasticos/
+Transição de imagens com SASS e JS puro, inspirado no slider feito no [curso de Javascript da Origamid](https://origamid.github.io/animais-fantasticos/) no projeto Animais Fantásticos.
 
-![](/src/img/slide-print-pronto.png)
+![](/src/img/slider.gif)
